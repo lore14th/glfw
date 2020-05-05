@@ -3,8 +3,8 @@ project "GLFW"
     language "C"
     staticruntime "On"
     
-    targetdir ("bin/%{cfg.system}/%{prj.name}")
-    objdir ("bin-int/%{cfg.system}/%{prj.name}")
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
     files
     {
@@ -16,7 +16,10 @@ project "GLFW"
         "src/input.c",
         "src/monitor.c",
         "src/vulkan.c",
-        "src/window.c"
+        "src/window.c",
+
+        "src/internal.h",
+        "src/mappings.h",
     }
 
     filter "system:windows"
@@ -40,8 +43,39 @@ project "GLFW"
             "_GLFW_WIN32",
             "_CRT_SECURE_NO_WARNINGS"
         }
+
+    filter "system:macosx"
+        systemversion "latest"
+        staticruntime "On"
+        pic "On"
+        files 
+        {
+            "src/cocoa_init.m",
+            "src/cocoa_joystick.m",
+            "src/cocoa_monitor.m",
+            "src/cocoa_window.m",
+            "src/cocoa_time.c",
+            "src/posix_thread.c",
+            "src/nsgl_context.m",
+            "src/egl_context.c",
+            "src/osmesa_context.c"
+        }
+
+		links
+		{
+			"CoreFoundation.framework",
+			"Cocoa.framework",
+			"IOKit.framework",
+			"CoreVideo.framework"
+		}
+
+        defines 
+        { 
+            "_GLFW_COCOA",
+            "_CRT_SECURE_NO_WARNINGS"
+        }
         
-        filter "configurations:Debug"
+    filter "configurations:Debug"
         runtime "Debug"
         symbols "on"	-- debug version --
 
