@@ -43,8 +43,10 @@ project "GLFW"
 		
 		filter "configurations:Debug"
 		runtime "Debug"
-		symbols "on"	-- debug version --
+		symbols "On"	-- debug version --
 
 	filter "configurations:Release"
 		runtime "Release"
-		optimize "on"	-- release version --
+		optimize "Full"	-- release version --
+		inlining "Auto"
+		floatingpoint "Fast"
