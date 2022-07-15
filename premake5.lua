@@ -1,7 +1,7 @@
 project "glfw"
 	kind "StaticLib"
 	language "C"
-	staticruntime "On"
+	staticruntime "Off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -41,12 +41,16 @@ project "glfw"
 			"_CRT_SECURE_NO_WARNINGS"
 		}
 		
-		filter "configurations:Debug"
+	filter "configurations:Debug"
 		runtime "Debug"
-		symbols "On"	-- debug version --
+		symbols "On"
 
 	filter "configurations:Release"
 		runtime "Release"
-		optimize "Full"	-- release version --
-		inlining "Auto"
-		floatingpoint "Fast"
+		optimize "On"
+		symbols "On"
+
+	filter "configurations:Distribution"
+		runtime "Release"
+		optimize "On"
+		symbols "Off"
