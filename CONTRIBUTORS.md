@@ -8,6 +8,7 @@ video tutorials.
  - Bobyshev Alexander
  - Laurent Aphecetche
  - Matt Arsenault
+ - Takuro Ashie
  - ashishgamedev
  - David Avedissian
  - Luca Bacci
@@ -19,11 +20,13 @@ video tutorials.
  - Nevyn Bengtsson
  - Niklas Bergström
  - Denis Bernard
+ - BiBi
  - Doug Binks
  - blanco
  - Waris Boonyasiriwat
  - Kyle Brenneman
  - Rok Breulj
+ - TheBrokenRail
  - Kai Burjack
  - Martin Capitanio
  - Nicolas Caramelli
@@ -31,6 +34,7 @@ video tutorials.
  - Arturo Castro
  - Chi-kwan Chan
  - TheChocolateOre
+ - Ali Chraghi
  - Joseph Chua
  - Ian Clarkson
  - Michał Cichoń
@@ -44,6 +48,7 @@ video tutorials.
  - Noel Cower
  - CuriouserThing
  - Jason Daly
+ - danhambleton
  - Jarrod Davis
  - Olivier Delannoy
  - Paul R. Deppe
@@ -58,6 +63,7 @@ video tutorials.
  - Jan Ekström
  - Siavash Eliasi
  - Ahmad Fatoum
+ - Nikita Fediuchin
  - Felipe Ferreira
  - Michael Fogleman
  - Jason Francis
@@ -78,10 +84,12 @@ video tutorials.
  - Jonathan Hale
  - hdf89shfdfs
  - Sylvain Hellegouarch
+ - Björn Hempel
  - Matthew Henry
  - heromyth
  - Lucas Hinderberger
  - Paul Holden
+ - Hajime Hoshi
  - Warren Hu
  - Charles Huber
  - Brent Huisman
@@ -120,6 +128,7 @@ video tutorials.
  - lukect
  - Tristam MacDonald
  - Hans Mackowiak
+ - Ramiro Magno
  - Дмитри Малышев
  - Zbigniew Mandziejewicz
  - Adam Marcus
@@ -136,6 +145,7 @@ video tutorials.
  - Kenneth Miller
  - Bruce Mitchener
  - Jack Moffitt
+ - Ravi Mohan
  - Jeff Molofee
  - Alexander Monakov
  - Pierre Morel
@@ -143,10 +153,13 @@ video tutorials.
  - Pierre Moulon
  - Martins Mozeiko
  - Pascal Muetschard
+ - James Murphy
  - Julian Møller
  - ndogxj
+ - F. Nedelec
  - n3rdopolis
  - Kristian Nielsen
+ - Joel Niemelä
  - Kamil Nowakowski
  - onox
  - Denis Ovod
@@ -156,8 +169,10 @@ video tutorials.
  - Peoro
  - Braden Pellett
  - Christopher Pelloux
+ - Michael Pennington
  - Arturo J. Pérez
  - Vladimir Perminov
+ - Olivier Perret
  - Anthony Pesch
  - Orson Peters
  - Emmanuel Gil Peyrot
@@ -171,10 +186,13 @@ video tutorials.
  - Pablo Prietz
  - przemekmirek
  - pthom
+ - Martin Pulec
  - Guillaume Racicot
+ - Christian Rauch
  - Philip Rideout
  - Eddie Ringle
  - Max Risuhin
+ - Joe Roback
  - Jorge Rodriguez
  - Jari Ronkainen
  - Luca Rood
@@ -228,6 +246,7 @@ video tutorials.
  - Torsten Walluhn
  - Patrick Walton
  - Xo Wang
+ - Andre Weissflog
  - Jay Weisskopf
  - Frank Wille
  - Andy Williams
