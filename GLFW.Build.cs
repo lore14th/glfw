@@ -36,13 +36,13 @@ public class GLFW : TinfoilProjectBase
 		{
 			config.Defines.Add("_GLFW_WIN32");
 
-			ExcludeFileByPrefix(config, target, "cocoa");
-			ExcludeFileByPrefix(config, target, "glx");
-			ExcludeFileByPrefix(config, target, "linux");
-			ExcludeFileByPrefix(config, target, "posix");
-			ExcludeFileByPrefix(config, target, "wl");
-			ExcludeFileByPrefix(config, target, "x11");
-			ExcludeFileByPrefix(config, target, "xkb");
+			ExcludeFilesByPrefix(config, target, "cocoa");
+			ExcludeFilesByPrefix(config, target, "glx");
+			ExcludeFilesByPrefix(config, target, "linux");
+			ExcludeFilesByPrefix(config, target, "posix");
+			ExcludeFilesByPrefix(config, target, "wl");
+			ExcludeFilesByPrefix(config, target, "x11");
+			ExcludeFilesByPrefix(config, target, "xkb");
 		}
 	}
 }
