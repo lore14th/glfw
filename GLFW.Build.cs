@@ -1,22 +1,24 @@
-// GLFW Tinfoil build script
+// Tinfoil Engine Build Script
 
 using Sharpmake;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using TinfoilBuildTool;
 
-[Sharpmake.Generate]
-public class GLFW : TinfoilProjectBase
+using Configuration = Sharpmake.Project.Configuration;
+
+[BuildModule(typeof(TinfoilProject))]
+public class GLFW : TinfoilThirdPartyModuleDependency
 {
-	public GLFW()
+	public GLFW(ReadOnlyModuleRules rules) : base(rules)
 	{
-		Name = "GLFW";
-		SourceFiles.Add("GLFW.Build.cs");
 	}
 
-	public override void ConfigureProject(Project.Configuration config, TinfoilTarget target)
+	public override void ConfigureBuild(Configuration config, ITarget target)
 	{
-		config.Output = Configuration.OutputType.Lib;
+		base.ConfigureBuild(config, target);
 
 		config.Options.Add(Options.Vc.Compiler.CLanguageStandard.C11);
 		config.Options.Add(Options.Vc.General.WindowsTargetPlatformVersion.Latest);
@@ -24,24 +26,27 @@ public class GLFW : TinfoilProjectBase
 		// C4244: Cast possible data loss, C4100: unused function param
 		config.Options.Add(new Options.Vc.Compiler.DisableSpecificWarnings("4244", "4100"));
 
-		config.IncludePaths.Add("/include");
+		config.IncludePaths.Add(Path.Combine("[project.SharpmakeCsPath]", "include"));
 		config.Defines.Add("_CRT_SECURE_NO_WARNINGS");
 
-		ExcludeFolder(config, target, "deps");
-		ExcludeFolder(config, target, "examples");
-		ExcludeFolder(config, target, "tests");
-
-		if (target.Platform == Platform.win64)
+		List<string> platformsToRemove = new List<string>();
+		if (target.GetPlatform() == Platform.win32 || target.GetPlatform() == Platform.win64)
 		{
 			config.Defines.Add("_GLFW_WIN32");
+			platformsToRemove.AddRange(new string[] { "cocoa", "glx", "linux", "posix", "wl", "x11", "xkb" });
 
-			ExcludeFilesByPrefix(config, target, "cocoa");
-			ExcludeFilesByPrefix(config, target, "glx");
-			ExcludeFilesByPrefix(config, target, "linux");
-			ExcludeFilesByPrefix(config, target, "posix");
-			ExcludeFilesByPrefix(config, target, "wl");
-			ExcludeFilesByPrefix(config, target, "x11");
-			ExcludeFilesByPrefix(config, target, "xkb");
 		}
+
+		FilterSourceFiles(config, platformsToRemove);
+	}
+
+	private void FilterSourceFiles(Configuration config, List<string> platformToRemove)
+	{
+		config.SourceFilesBuildExclude.AddRange(Directory.EnumerateFiles(Path.Combine(RootDirectory, "deps"), "*", SearchOption.AllDirectories));
+		config.SourceFilesBuildExclude.AddRange(Directory.EnumerateFiles(Path.Combine(RootDirectory, "examples"), "*", SearchOption.AllDirectories));
+		config.SourceFilesBuildExclude.AddRange(Directory.EnumerateFiles(Path.Combine(RootDirectory, "tests"), "*", SearchOption.AllDirectories));
+
+		config.SourceFilesBuildExclude.AddRange(Directory.EnumerateFiles(Path.Combine(RootDirectory, "src"), "*", SearchOption.AllDirectories).
+			Where(file => platformToRemove.Any(platform => Path.GetFileName(file).StartsWith(platform, StringComparison.OrdinalIgnoreCase))));
 	}
 }
